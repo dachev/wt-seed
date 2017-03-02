@@ -1,0 +1,17 @@
+{
+  "name": "cache",
+  "version": "1.0.0",
+  "description": "App cache seed builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blagovest Dachev",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "lodash": "^4.17.4",
+    "request": "^2.79.0"
+  }
+}
