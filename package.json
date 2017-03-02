@@ -1,7 +1,7 @@
 {
-  "name": "cache",
+  "name": "seed",
   "version": "1.0.0",
-  "description": "App cache seed builder",
+  "description": "App seed builder",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
