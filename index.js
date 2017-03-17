@@ -63,8 +63,11 @@ function main() {
 
   const data = +(new Date) + '\n';
   fs.appendFile(program.outputFile, data, function (err) {
-    const url = program.baseUrl + '/' + 'exercises?summary=true&fetch_all=true';
-    httpRunner.push(url, handleExercisesResponse);
+    const exercisesUrl = program.baseUrl + '/' + 'exercises?summary=true&fetch_all=true';
+    httpRunner.push(exercisesUrl, handleExercisesApiResponse);
+
+    const musclesUrl = program.baseUrl + '/' + 'muscle_groups';
+    httpRunner.push(musclesUrl, handleApiResponse);
   });
 }
 
@@ -89,7 +92,7 @@ function saveToFile(text, cb) {
   });
 }
 
-function handleExercisesResponse(err, url, json) {
+function handleExercisesApiResponse(err, url, json) {
   if (err) {
     console.error(err.message.red);
     console.error(err);
@@ -101,13 +104,13 @@ function handleExercisesResponse(err, url, json) {
 
   _.each(json, function(exercise) {
     const url = program.baseUrl + '/' + 'exercises/' + exercise.id;
-    httpRunner.push(url, handleExerciseResponse);
+    httpRunner.push(url, handleApiResponse);
   });
 
   console.log(body.length, url);
 }
 
-function handleExerciseResponse(err, url, json) {
+function handleApiResponse(err, url, json) {
   if (err) {
     console.error(err.message.red);
     console.error(err);
