@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-"use strict";
-
 try {
   var fs         = require('fs');
   var path       = require('path');
@@ -11,6 +9,7 @@ try {
   var request    = require('request');
   var httpRunner = null;
   var fileRunner = null;
+  var TIMEOUT    = 60000;
 
   parseArguments(program);
 }
@@ -72,7 +71,7 @@ function main() {
 }
 
 function fetchUrl(url, cb) {
-  request(url, function (err, response, body) {
+  request(url, {timeout: TIMEOUT}, function (err, response, body) {
     const json = body && JSON.parse(body);
     if (!err && response.statusCode != 200) {
       err = {message:'Unknown error'};
