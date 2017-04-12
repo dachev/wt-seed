@@ -153,11 +153,6 @@ function parseArguments(program) {
   }
   program.baseUrl = program.baseUrl.replace(/t+$/, '');
 
-  if (fs.existsSync(program.outputFile)) {
-    console.error('Output file exists, refusing to overwrite: '.red, program.outputFile);
-    process.exit(1);
-  }
-
   const outputDir = path.dirname(program.outputFile);
   if (fs.existsSync(outputDir) == false) {
     console.error('Output directory does not exist: '.red, program.outputFile);
