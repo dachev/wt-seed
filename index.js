@@ -67,6 +67,9 @@ function main() {
     const exercisesUrl = program.baseUrl + '/' + 'exercises?summary=true&fetch_all=true';
     httpRunner.push(exercisesUrl, handleExercisesApiResponse);
 
+    const settingsUrl = program.baseUrl + '/' + 'settings';
+    httpRunner.push(settingsUrl, handleApiResponse);
+
     const musclesUrl = program.baseUrl + '/' + 'muscle_groups';
     httpRunner.push(musclesUrl, handleApiResponse);
   });
