@@ -57,7 +57,7 @@ class ParallelTaskRunner {
 function main() {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-  fs.truncateSync(program.outputFile, 0);
+  fs.closeSync(fs.openSync(program.outputFile, 'w'));
 
   httpRunner = new ParallelTaskRunner(10, fetchUrl);
   fileRunner = new ParallelTaskRunner(1, saveToFile);
