@@ -64,13 +64,16 @@ function main() {
 
   const data = +(new Date) + '\n';
   fs.appendFile(program.outputFile, data, function (err) {
-    const exercisesUrl = program.baseUrl + '/' + 'exercises?summary=true&fetch_all=true';
+    const plansUrl = program.baseUrl + '/workout-plans?summary=true&fetch_all=true';
+    httpRunner.push(plansUrl, handleApiResponse);
+
+    const exercisesUrl = program.baseUrl + '/exercises?summary=true&fetch_all=true';
     httpRunner.push(exercisesUrl, handleExercisesApiResponse);
 
-    const settingsUrl = program.baseUrl + '/' + 'settings';
+    const settingsUrl = program.baseUrl + '/settings';
     httpRunner.push(settingsUrl, handleApiResponse);
 
-    const musclesUrl = program.baseUrl + '/' + 'muscle_groups';
+    const musclesUrl = program.baseUrl + '/muscle_groups';
     httpRunner.push(musclesUrl, handleApiResponse);
   });
 }
