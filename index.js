@@ -79,7 +79,15 @@ function main() {
 }
 
 function fetchUrl(url, cb) {
-  request(url, {timeout: TIMEOUT}, function (err, response, body) {
+  var options = {
+    url: url,
+    headers: {
+      'CLIENT-VERSION': '5.0.0'
+    },
+    timeout: TIMEOUT
+  };
+
+  request(options, function (err, response, body) {
     const json = body && JSON.parse(body);
     if (!err && response.statusCode != 200) {
       err = {message:'Unknown error'};
