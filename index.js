@@ -82,7 +82,8 @@ function fetchUrl(url, cb) {
   var options = {
     url: url,
     headers: {
-      'CLIENT-VERSION': '5.0.0'
+      'CLIENT-VERSION': '5.0.0',
+      'PLATFORM-NAME': 'ios'
     },
     timeout: TIMEOUT
   };
