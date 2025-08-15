@@ -1,6 +1,6 @@
 {
   "name": "seed",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "App seed builder",
   "main": "index.js",
   "scripts": {

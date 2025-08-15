@@ -67,9 +67,6 @@ function main() {
     const plansUrl = program.baseUrl + '/workout-plans?summary_only=true&fetch_all=true';
     httpRunner.push(plansUrl, handleApiResponse);
 
-    const exercisesUrl = program.baseUrl + '/exercises?summary=true&fetch_all=true';
-    httpRunner.push(exercisesUrl, handleExercisesApiResponse);
-
     const settingsUrl = program.baseUrl + '/settings';
     httpRunner.push(settingsUrl, handleApiResponse);
 
@@ -106,24 +103,6 @@ function saveToFile(text, cb) {
   fs.appendFile(program.outputFile, data, function (err) {
     cb(err);
   });
-}
-
-function handleExercisesApiResponse(err, url, json) {
-  if (err) {
-    console.error(err.message.red);
-    console.error(err);
-    process.exit(1);
-  }
-
-  const body = JSON.stringify(json);
-  fileRunner.push(url + ' ' + body, handleFileAppended);
-
-  _.each(json, function(exercise) {
-    const url = program.baseUrl + '/' + 'exercises/' + exercise.id;
-    httpRunner.push(url, handleApiResponse);
-  });
-
-  console.log(body.length, url);
 }
 
 function handleApiResponse(err, url, json) {
